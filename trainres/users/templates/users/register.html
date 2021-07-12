@@ -1,9 +1,19 @@
 {% extends "trips/base.html" %}
 {% load crispy_forms_tags %}
+{% block head %}
+<style>
+.form-signin {
+  width: 100%;
+  max-width: 550px;
+  padding: 15px;
+  margin: auto;
+}
+</style>
+{% endblock head %}
 {% block content %}
     <div class="content-section">
-        <form method="POST">
-            <fieldset >
+        <form method="POST" class="form-signin">
+            <fieldset>
                 {% csrf_token %}
                 <legend>Sign up</legend>
                 {{ form|crispy }}
