@@ -1,5 +1,14 @@
 {% extends "trips/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    {{ form|crispy }}
+    <div class="content-section">
+        <form method="POST">
+            <fieldset >
+                {% csrf_token %}
+                <legend>Sign up</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <button type="submit" class="btn btn-outline-info">Sign up</button>
+        </form>
+    </div>
 {% endblock content %}
