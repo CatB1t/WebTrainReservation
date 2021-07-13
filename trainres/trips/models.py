@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class Train(models.Model):
     Train_name = models.CharField(max_length=20)
     train_id = models.AutoField(primary_key=True)
