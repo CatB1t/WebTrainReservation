@@ -1,4 +1,5 @@
 {% extends "trips/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 {% if trips %}
 <!-- <div class="container rounded bg-white mt-5 p-5 table-responsive">
@@ -10,9 +11,8 @@
 <div class="row">
     <div class="col">
         <div class="card card-body">
-
             <form method="get">
-            {{ filter.form }}
+            {{ filter.form|crispy }}
             <button class="btn btn-primary" type="submit">Search</button>
             </form>
 
@@ -25,7 +25,8 @@
         <th scope="col">Source</th>
         <th scope="col"></th>
         <th scope="col">Destination</th>
-        <th scope="col">Date</th>
+        <th scope="col">Departure Date</th>
+        <th scope="col">Departure Time</th>
         <th scope="col"># Available Seats</th>
         <th scope="col">Train Name</th>
         <th scope="col"></th>
@@ -37,7 +38,8 @@
     <td>{{ trip.source }}</td>
     <td>→</td>
     <td>{{ trip.destination }}</td>
-    <td>{{ trip.date_time|date:"F d, Y" }}</td>
+    <td>{{ trip.dept_date|date:"F d, Y" }}</td>
+    <td>{{ trip.dept_time }}</td>
     <td>{{ trip.reserved_seats }}</td>
     <td>{{ trip.train_id.Train_name }}</td>
     <td><button type="button" class="btn btn-success">Book</button></td>

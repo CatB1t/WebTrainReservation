@@ -17,7 +17,8 @@ class Trip(models.Model):
     source = models.CharField(max_length=30)
     destination = models.CharField(max_length=30)
     reserved_seats = models.IntegerField(default=0)
-    date_time = models.DateTimeField()
+    dept_date = models.DateField()
+    dept_time = models.TimeField()
 
     def __str__(self):
         return self.Trip_name
