@@ -4,24 +4,26 @@
 <div class="container rounded bg-white mt-5 p-5 table-responsive">
 <table class="table table-striped">
     <thead>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Date</th>
+        <th scope="col">#</th>
         <th scope="col">Source</th>
+        <th scope="col"></th>
         <th scope="col">Destination</th>
-        <th scope="col">Train name</th>
+        <th scope="col">Date</th>
+        <th scope="col"># Seats</th>
+        <th scope="col">Train Name</th>
         <th scope="col"></th>
     </thead>
     <tbody>
 {% for trip in trips %}
 <tr>
-        <td>{{ trip.reserved_seatstrain_id. }}</td>
-        <td>{{ trip.Trip_name }}</td>
-        <td>{{ trip.date_time|date:"F d, Y" }}</td>
-        <td>{{ trip.source }}</td>
-        <td>{{ trip.destination }}</td>
-        <td>{{ trip.train_id.Train_name }}</td>
-        <td><button type="button" class="btn btn-success">Book</button></td>
+    <td>{{ trip.trip_id }}</td>
+    <td>{{ trip.source }}</td>
+    <td>→</td>
+    <td>{{ trip.destination }}</td>
+    <td>{{ trip.date_time|date:"F d, Y" }}</td>
+    <td>{{ trip.reserved_seats }}</td>
+    <td>{{ trip.train_id.Train_name }}</td>
+    <td><button type="button" class="btn btn-success">Book</button></td>
     </tr>
 {% endfor %}
     </tbody>
