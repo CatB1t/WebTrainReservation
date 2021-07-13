@@ -1,4 +1,17 @@
 {% extends "trips/base.html" %}
 {% block content %}
-
+{% for trip in trips %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ trip.Trip_name }}</a>
+            <small class="text-muted">{{ trip.date_time|date:"F d, Y" }}</small>
+        </div>
+        <h2>{{ trip.source }}</h2>
+        <h2>{{ trip.destination }}</h2>
+        <h2>{{ trip.reserved_seatstrain_id. }}</h2>
+        <h2>{{ trip.train_id.Train_name }}</h2>
+    </div>
+</article>
+{% endfor %}
 {% endblock content %}

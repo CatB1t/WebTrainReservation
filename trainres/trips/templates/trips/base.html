@@ -29,7 +29,7 @@
             </a>
             
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2">Home</a></li>
+              <li><a href="{% url 'trainres-home' %}" class="nav-link px-2">Home</a></li>
               <li><a href="#" class="nav-link px-2">Book</a></li>
             </ul>
             
@@ -41,7 +41,7 @@
                 <a href="#" class="float-right link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="false">
                     <img src="{% static 'users/default_avatar.png' %}" alt="profilePicture" width="32" height="32" class="rounded-circle">
                 </a>
-                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser" style="">
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
                   <li><a class="dropdown-item" href="{% url 'users-profile' %}">Profile</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'users-logout' %}">Sign out</a></li>

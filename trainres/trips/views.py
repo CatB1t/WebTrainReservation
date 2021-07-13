@@ -1,6 +1,10 @@
 from django.shortcuts import render
+from .models import Trip
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'trips/home.html')
+    context = {
+        'trips': Trip.objects.all()
+    }
+    return render(request, 'trips/home.html', context)
