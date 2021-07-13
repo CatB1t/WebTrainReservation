@@ -2,7 +2,17 @@
 {% block content %}
 {% if trips %}
 <div class="container rounded bg-white mt-5 p-5 table-responsive">
-<table class="table table-striped">
+    <form method="get">
+        {{ filter.form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    {% for obj in filter.qs %}
+        {{obj.Trip_name}}
+        {{obj.date_time}}
+        {{obj.trip_id}}
+        <br />
+    {% endfor %}
+    <table class="table table-striped">
     <thead>
         <th scope="col">#</th>
         <th scope="col">Source</th>
