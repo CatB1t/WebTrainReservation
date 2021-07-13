@@ -3,9 +3,7 @@
 {% block head %}
 {% endblock head %}
 {% block content %}
-<div class="row">
-    <div class="col">
-        <div class="card card-body align-items-center justify-content-center justify-content-md-between">
+<div class=" card card-body align-items-center justify-content-center justify-content-md-between">
             <form method="GET" class="form-inline">
                 <div class="form-group mb-2">
                 <label for="{{ filter.form.source.id_for_label }}" class="mr-2">
@@ -48,9 +46,8 @@
                 
             </form>
         </div>
-    </div>
-</div>
 {% if trips %}
+<div class="container card p-4 mt-3" style="max-width: 1250px;">
     <table class="table table-striped">
     <thead>
         <th scope="col">#</th>
@@ -68,10 +65,10 @@
 <tr>
     <td>{{ trip.trip_id }}</td>
     <td>{{ trip.source }}</td>
-    <td>→</td>
+    <td style="font-size: 36px; line-height: 14px;">→</td>
     <td>{{ trip.destination }}</td>
     <td>{{ trip.dept_date|date:"F d, Y" }}</td>
-    <td>{{ trip.dept_time }}</td>
+    <td>{{ trip.dept_time|time:"H:i"}}</td>
     <td>{{ trip.reserved_seats }}</td>
     <td>{{ trip.train_id.Train_name }}</td>
     <td><button type="button" class="btn btn-success">Book</button></td>
@@ -79,6 +76,7 @@
 {% endfor %}
     </tbody>
 </table>
+</div>
 </div>
 {% endif %}
 {% endblock content %}
