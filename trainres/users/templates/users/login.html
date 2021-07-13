@@ -27,6 +27,7 @@
 </style>
 {% endblock head %}
 {% block content %}
+  <div class="container rounded bg-white mt-5 p-2" style="max-width: 550px;">
     <form method="POST" class="form-signin">
         {% if form.non_field_errors %}
     <div class="text-danger" style="list-style-type: none;">
@@ -49,5 +50,5 @@
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     </form>
-    
+  </div>
 {% endblock content %}

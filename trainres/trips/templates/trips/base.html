@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -40,16 +39,15 @@
                     <a href="{% url 'users-register' %}" class="btn btn-primary">Sign-up</a>
             {% else %}
                 <a href="#" class="float-right link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="{% static 'users/default_avatar.png' %}" alt="profilePicture" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser" style="">
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="{% url 'users-profile' %}">Profile</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'users-logout' %}">Sign out</a></li>
                 </ul>
             {% endif %}
             </div>
-
             </div>
           </div>
       </header>
