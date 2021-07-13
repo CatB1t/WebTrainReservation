@@ -18,14 +18,7 @@
 
         </div>
     </div>
-
 </div>
-    {% for obj in filter.qs %}
-        {{obj.Trip_name}}
-        {{obj.date_time}}
-        {{obj.trip_id}}
-        <br>
-    {% endfor %}
     <table class="table table-striped">
     <thead>
         <th scope="col">#</th>
@@ -38,7 +31,7 @@
         <th scope="col"></th>
     </thead>
     <tbody>
-{% for trip in trips %}
+{% for trip in filter.qs %}
 <tr>
     <td>{{ trip.trip_id }}</td>
     <td>{{ trip.source }}</td>

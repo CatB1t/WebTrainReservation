@@ -7,7 +7,6 @@ from .filters import BookFilter
 
 def home(request):
     f = BookFilter(request.GET, queryset=Trip.objects.all())
-    trips = f.qs
     
     context = {
         'trips': Trip.objects.all(),
