@@ -1,13 +1,10 @@
 {% extends "trips/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+{% if not user.is_authenticated %}
+{% else %}
 {% if trips %}
-<!-- <div class="container rounded bg-white mt-5 p-5 table-responsive">
-    <form method="get">
-        {{ filter.form.as_p }}
-        <button type="submit">Search</button>
-    </form>
-</div> -->
+
 <div class="row">
     <div class="col">
         <div class="card card-body">
@@ -48,5 +45,6 @@
     </tbody>
 </table>
 </div>
+{% endif %}
 {% endif %}
 {% endblock content %}
