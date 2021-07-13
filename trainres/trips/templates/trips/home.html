@@ -1,16 +1,30 @@
 {% extends "trips/base.html" %}
 {% block content %}
 {% if trips %}
-<div class="container rounded bg-white mt-5 p-5 table-responsive">
+<!-- <div class="container rounded bg-white mt-5 p-5 table-responsive">
     <form method="get">
         {{ filter.form.as_p }}
         <button type="submit">Search</button>
     </form>
+</div> -->
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+
+            <form method="get">
+            {{ filter.form }}
+            <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
     {% for obj in filter.qs %}
         {{obj.Trip_name}}
         {{obj.date_time}}
         {{obj.trip_id}}
-        <br />
+        <br>
     {% endfor %}
     <table class="table table-striped">
     <thead>
@@ -19,7 +33,7 @@
         <th scope="col"></th>
         <th scope="col">Destination</th>
         <th scope="col">Date</th>
-        <th scope="col"># Seats</th>
+        <th scope="col"># Available Seats</th>
         <th scope="col">Train Name</th>
         <th scope="col"></th>
     </thead>
