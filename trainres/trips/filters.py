@@ -21,7 +21,7 @@ class BookFilter(django_filters.FilterSet):
     dept_time = django_filters.TimeFilter(widget=forms.TextInput(attrs={'placeholder':'hh:mm', 'class': 'form-control'}), label="Time")
 
     reserved_seats = django_filters.NumberFilter(
-        method='minSeat', widget=forms.NumberInput(attrs={'class': 'form-control'}),
+        method='minSeat', widget=forms.NumberInput(attrs={'class': 'form-control', 'min': '1'}),
         label="Minimum Slots")
 
     def minSeat(self,qs,name,value):
