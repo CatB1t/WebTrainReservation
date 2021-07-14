@@ -16,7 +16,7 @@ class Trip(models.Model):
     train_id = models.ForeignKey(Train, on_delete=models.CASCADE)
     source = models.CharField(max_length=30)
     destination = models.CharField(max_length=30)
-    reserved_seats = models.IntegerField(default=0)
+    reserved_seats = models.PositiveIntegerField(default=0)
     dept_date = models.DateField()
     dept_time = models.TimeField()
 
