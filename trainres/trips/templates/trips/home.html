@@ -71,7 +71,7 @@
     <td>{{ trip.dept_time|time:"H:i"}}</td>
     <td>{{ trip.reserved_seats }}</td>
     <td>{{ trip.train_id.Train_name }}</td>
-    <td><button type="button" class="btn btn-success">Book</button></td>
+    <td><a href="{% url 'trainres-book' id=trip.trip_id %}" class="btn btn-success">Book</a></td>
     </tr>
 {% endfor %}
     </tbody>

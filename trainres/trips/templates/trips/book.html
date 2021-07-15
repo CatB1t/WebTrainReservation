@@ -1,0 +1,14 @@
+{% extends "trips/base.html" %}
+{% block head %}
+{% endblock head %}
+{% block content %}
+<h1>Book </h1>
+You sure you want to book? {{ trip.Trip_name }} {{ trip_.train_id }} {{ trip.trip_id }}
+<br>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    {{ error }}
+    <input type="submit" />
+</form>
+{% endblock content %}
