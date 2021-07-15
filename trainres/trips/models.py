@@ -23,6 +23,7 @@ class Trip(models.Model):
     def __str__(self):
         return self.Trip_name
 
+
 class Booking(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     trip_id = models.ForeignKey(Trip, on_delete=models.CASCADE)
