@@ -1,0 +1,33 @@
+{% extends "trips/base.html" %}
+{% block content %}
+<div class="container card p-4 mt-3" style="max-width: 1250px;">
+    <table class="table table-striped">
+    <thead>
+        <th scope="col">#</th>
+        <th scope="col">Source</th>
+        <th scope="col"></th>
+        <th scope="col">Destination</th>
+        <th scope="col">Departure Date</th>
+        <th scope="col">Departure Time</th>
+        <th scope="col"># Booked Seats</th>
+        <th scope="col">Status</th>
+        <th scope="col">Payment Method</th>
+    </thead>
+    <tbody>
+<tr>
+    <td>{{ book.id }}</td>
+    <td>{{ book.trip_id.source }}</td>
+    <td style="font-size: 36px; line-height: 14px;">→</td>
+    <td>{{ book.trip_id.destination }}</td>
+    <td>{{ book.trip_id.dept_date|date:"F d, Y" }}</td>
+    <td>{{ book.trip_id.dept_time|time:"H:i"}}</td>
+    <td>{{ book.seats }}</td>
+    <td>STATUS</td>
+    <td>{{ book.payment_method }}</td>
+</tr>
+</tbody>
+</table>
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'booking-delete' book.id %}">Cancel</a>
+</div>
+{% endblock content %}
+

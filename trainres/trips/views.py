@@ -50,7 +50,7 @@ def book(request, id):
 
     context = {
         'trip' : tripToBook,
-        
+
     }
 
     if request.method == 'POST':
@@ -71,12 +71,21 @@ def book(request, id):
     return render(request, 'trips/book.html', context)
 
 
-class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Booking
-    success_url = '/'
+def booking_details(request , id):
+    book = Booking.objects.get(id =id)
+    context = {
+        'book' : book,
+    }
 
-    def test_func(self):
-        booking = self.get_object()
-        if self.request.user == booking.user_id:
-            return True
-        return False
+    return render(request , 'trips/booking_details.html' , context)
+
+def booking_delete(request , id):
+    book = Booking.objects.get(id =id)
+    context = {
+        'book' : book,
+    }
+    return render(request , 'trips/booking_delete.html' , context)
+
+def delete(request , id):
+    Booking.objects.filter(id=id).delete()
+    return redirect('trainres-bookings')

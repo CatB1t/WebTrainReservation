@@ -1,0 +1,25 @@
+{% extends "trips/base.html" %}
+{% block head %}
+<style>
+.content-section{
+    text-align: center;
+}
+</style>
+{% endblock head %}
+
+
+{% block content %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Cancel Booking</legend>
+            <h2>Are you sure you want to cancel the booking </h2>
+        </fieldset>
+        <div class="form-group">
+            <a class="btn btn-outline-danger" href="{% url 'delete' book.id %}" >Yes, Cancel</a>
+            <a class="btn btn-outline-secondary" href="{% url 'trainres-bookings'%}">Undo</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}
