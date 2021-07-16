@@ -16,6 +16,10 @@ def home(request):
 
     return render(request, 'trips/home.html', context)
 
+@login_required
+def bookings(request):
+    userBookings = Booking.objects.filter(user_id=request.user)
+    return render(request, 'trips/bookings.html', {'bookings': userBookings})
 
 @login_required
 def book(request, id):
