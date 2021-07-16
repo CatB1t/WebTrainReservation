@@ -31,7 +31,7 @@
             
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
               <li><a href="{% url 'trainres-home' %}" class="nav-link px-2">Home</a></li>
-              <li><a href="{% url 'trainres-book' %}" class="nav-link px-2">Book</a></li>
+              <li><a href="{% url 'trainres-bookings' %}" class="nav-link px-2">Book</a></li>
               {% if user.is_superuser %}
               <li><a href="{%  url 'admin:index' %}" class="nav-link px-2">Admin</a></li>
               {% endif %}
