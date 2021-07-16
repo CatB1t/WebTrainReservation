@@ -28,3 +28,8 @@ class Booking(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     trip_id = models.ForeignKey(Trip, on_delete=models.CASCADE)
     seats = models.PositiveIntegerField(default=1)
+    payement_choices = [
+        ('CASH' , 'Cash'),
+        ('VISA' , 'Visa'),
+    ]
+    payment_method = models.CharField(max_length=4 , choices=payement_choices, default='CASH')

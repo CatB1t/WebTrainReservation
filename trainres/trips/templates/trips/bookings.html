@@ -14,6 +14,7 @@
         <th scope="col">Departure Time</th>
         <th scope="col"># Booked Seats</th>
         <th scope="col">Status</th>
+        <th scope="col">Payment Method</th>
     </thead>
     <tbody>
 {% for book in bookings %}
@@ -26,6 +27,7 @@
     <td>{{ book.trip_id.dept_time|time:"H:i"}}</td>
     <td>{{ book.seats }}</td>
     <td>STATUS</td>
+    <td>{{ book.payment_method }}</td>
 </tr>
 {% endfor %}
 </tbody>

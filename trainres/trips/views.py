@@ -46,9 +46,11 @@ def bookings(request):
 @login_required
 def book(request, id):
     tripToBook = Trip.objects.get(trip_id=id)
+    payment = request.POST.get('payment_method')
 
     context = {
         'trip' : tripToBook,
+        
     }
 
     if request.method == 'POST':
@@ -59,7 +61,7 @@ def book(request, id):
             context['form'] = BookingForm(request.POST)
             return render(request, 'trips/book.html', context)
 
-        obj = Booking(user_id=request.user, trip_id=tripToBook, seats=num)
+        obj = Booking(user_id=request.user, trip_id=tripToBook, seats=num , payment_method= payment)
         obj.save()
         tripToBook.__setattr__('reserved_seats', (availableSeats-num))
         tripToBook.save()
