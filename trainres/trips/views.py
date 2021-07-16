@@ -9,11 +9,21 @@ from django.core.paginator import Paginator,EmptyPage
 
 
 def home(request):
-    f = BookFilter(request.GET, queryset=Trip.objects.all())
+    filteredResult = BookFilter(
+        request.GET, queryset=Trip.objects.all()
+    )
+
+    page_num = request.GET.get('page', 1)
+    p = Paginator(filteredResult.qs, 7)
     
+    try:
+        page = p.page(page_num)
+    except EmptyPage:
+        page = p.page(1)
+
     context = {
-        'trips': Trip.objects.all(),
-        'filter': f
+        'filter': filteredResult,
+        'results' : page
     }
 
     return render(request, 'trips/home.html', context)

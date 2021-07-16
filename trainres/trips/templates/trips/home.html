@@ -44,7 +44,7 @@
             </form>
         </div>
  </div>
-{% if trips %}
+{% if results %}
 <div class="container card p-4 mt-3" style="max-width: 1250px;">
     <table class="table table-striped">
     <thead>
@@ -59,7 +59,7 @@
         <th scope="col"></th>
     </thead>
     <tbody>
-{% for trip in filter.qs %}
+{% for trip in results %}
 <tr>
     <td>{{ trip.trip_id }}</td>
     <td>{{ trip.source }}</td>
@@ -74,6 +74,18 @@
 {% endfor %}
     </tbody>
 </table>
+<div class="btn-group" role="group" aria-label="Basic example">
+    {% if results.has_previous %}
+        <a class="btn btn-outline-primary" href="{{ request.path }}?page={{ results.previous_page_number }}">Previous Page</a>
+    {% else %}
+        <a class="btn btn-outline-secondary" href="">Previous Page</a>
+    {% endif %}
+    {% if results.has_next %}
+        <a class="btn btn-outline-primary" href="{{ request.path }}?page={{ results.next_page_number }}">Next Page</a>
+    {% else %}
+        <a class="btn btn-outline-secondary" href="">Next Page</a> 
+    {% endif %}
+</div>
 </div>
 </div>
 {% endif %}
