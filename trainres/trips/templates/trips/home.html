@@ -3,9 +3,10 @@
 {% block head %}
 {% endblock head %}
 {% block content %}
-<div class=" card card-body align-items-center justify-content-center justify-content-md-between">
-            <form method="GET" class="form-inline">
-                <div class="form-group mb-2">
+<div class="bg-white card-body align-items-center justify-content-center justify-content-md-between">
+    <div class="row justify-content-center">
+    <form method="GET" class="form-inline">
+        <div class="form-group mb-2">
                 <label for="{{ filter.form.source.id_for_label }}" class="mr-2">
                     {{ filter.form.source.label }}
                 </label>
@@ -46,6 +47,7 @@
                 
             </form>
         </div>
+ </div>
 {% if trips %}
 <div class="container card p-4 mt-3" style="max-width: 1250px;">
     <table class="table table-striped">
