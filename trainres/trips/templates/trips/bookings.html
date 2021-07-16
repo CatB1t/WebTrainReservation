@@ -18,7 +18,7 @@
     <tbody>
 {% for book in bookings %}
 <tr>
-    <td>{{ forloop.counter }}</td>
+    <td>{{ forloop.counter|add:pageOffset }}</td>
     <td>{{ book.trip_id.source }}</td>
     <td style="font-size: 36px; line-height: 14px;">→</td>
     <td>{{ book.trip_id.destination }}</td>
@@ -30,6 +30,18 @@
 {% endfor %}
 </tbody>
 </table>
+<div class="btn-group" role="group" aria-label="Basic example">
+    {% if bookings.has_previous %}
+        <a class="btn btn-outline-primary" href="{{ request.path }}?page={{ bookings.previous_page_number }}">Previous Page</a>
+    {% else %}
+        <a class="btn btn-outline-secondary" href="">Previous Page</a>
+    {% endif %}
+    {% if bookings.has_next %}
+        <a class="btn btn-outline-primary" href="{{ request.path }}?page={{ bookings.next_page_number }}">Next Page</a>
+    {% else %}
+        <a class="btn btn-outline-secondary" href="">Next Page</a> 
+    {% endif %}
+    </div>
 {% endif %}
 </div>
 {% endblock content%}

@@ -3,6 +3,8 @@ from .models import Booking, Trip
 from .filters import BookFilter
 from .forms import BookingForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator,EmptyPage
+
 # Create your views here.
 
 
@@ -19,7 +21,15 @@ def home(request):
 @login_required
 def bookings(request):
     userBookings = Booking.objects.filter(user_id=request.user)
-    return render(request, 'trips/bookings.html', {'bookings': userBookings})
+    p = Paginator(userBookings, 7)
+    page_num = request.GET.get('page', 1)
+
+    try:
+        page = p.page(page_num)
+    except EmptyPage:
+        page = p.page(1)
+    
+    return render(request, 'trips/bookings.html', {'bookings': page, 'pageOffset': (page.number-1) * 7})
 
 @login_required
 def book(request, id):
