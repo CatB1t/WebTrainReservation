@@ -4,6 +4,8 @@ from .filters import BookFilter
 from .forms import BookingForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator,EmptyPage
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import DeleteView
 
 # Create your views here.
 
@@ -65,3 +67,14 @@ def book(request, id):
         
     context['form'] = BookingForm()
     return render(request, 'trips/book.html', context)
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Booking
+    success_url = '/'
+
+    def test_func(self):
+        booking = self.get_object()
+        if self.request.user == booking.user_id:
+            return True
+        return False
