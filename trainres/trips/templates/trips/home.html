@@ -31,10 +31,10 @@
                     {{ filter.form.dept_time }}
                 </div>
                 <div class="form-group ml-4 mb-2 pl-3 border-left">
-                    <label for="{{ filter.form.reserved_seats.id_for_label }}" class="mr-2">
-                        {{ filter.form.reserved_seats.label }}
+                    <label for="{{ filter.form.available_seats.id_for_label }}" class="mr-2">
+                        {{ filter.form.available_seats.label }}
                     </label>
-                    {{ filter.form.reserved_seats }}
+                    {{ filter.form.available_seats }}
                 </div>
 
                 <div class="form-group ml-2 mb-2">
@@ -67,9 +67,13 @@
     <td>{{ trip.destination }}</td>
     <td>{{ trip.dept_date|date:"F d, Y" }}</td>
     <td>{{ trip.dept_time|time:"H:i"}}</td>
-    <td>{{ trip.reserved_seats }}</td>
+    <td>{{ trip.available_seats }}</td>
     <td>{{ trip.train_id.Train_name }}</td>
+    {% if trip.available_seats == 0  %}
+    <td class="btn btn-outline-primary">This trip reached maximum number of available seats</td>
+    {% else %}
     <td><a href="{% url 'trainres-book' id=trip.trip_id %}" class="btn btn-success">Book</a></td>
+    {% endif %}
     </tr>
 {% endfor %}
     </tbody>
