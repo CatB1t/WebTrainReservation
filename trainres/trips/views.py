@@ -87,5 +87,9 @@ def booking_delete(request , id):
     return render(request , 'trips/booking_delete.html' , context)
 
 def delete(request , id):
+    booking = Booking.objects.filter(id=id).first()
+    trip = booking.trip_id
+    trip.reserved_seats += booking.seats
+    trip.save()
     Booking.objects.filter(id=id).delete()
     return redirect('trainres-bookings')
