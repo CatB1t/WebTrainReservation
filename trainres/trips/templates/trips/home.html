@@ -67,11 +67,11 @@
     <td>{{ trip.destination }}</td>
     <td>{{ trip.dept_date|date:"F d, Y" }}</td>
     <td>{{ trip.dept_time|time:"H:i"}}</td>
-    <td>{{ trip.available_seats }}</td>
     <td>{{ trip.train_id.Train_name }}</td>
     {% if trip.available_seats == 0  %}
     <td class="btn btn-outline-primary">This trip reached maximum number of available seats</td>
     {% else %}
+    <td>{{ trip.available_seats }}</td>
     <td><a href="{% url 'trainres-book' id=trip.trip_id %}" class="btn btn-success">Book</a></td>
     {% endif %}
     </tr>
