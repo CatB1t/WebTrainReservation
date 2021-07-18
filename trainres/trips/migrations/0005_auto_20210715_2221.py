@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='trip',
-            name='reserved_seats',
+            name='available_seats',
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.DeleteModel(

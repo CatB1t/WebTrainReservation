@@ -20,13 +20,14 @@ class BookFilter(django_filters.FilterSet):
 
     dept_time = django_filters.TimeFilter(widget=forms.TextInput(attrs={'placeholder':'hh:mm', 'class': 'form-control'}), label="Time")
 
-    reserved_seats = django_filters.NumberFilter(
+    available_seats = django_filters.NumberFilter(
         method='minSeat', widget=forms.NumberInput(attrs={'class': 'form-control', 'min': '1'}),
         label="Minimum Slots")
 
     def minSeat(self,qs,name,value):
-        return qs.filter(reserved_seats__gte=value)
+        return qs.filter(available_seats__gte=value)
     
     class Meta:
         model = Trip
-        fields = ['source', 'destination', 'dept_date', 'dept_time', 'reserved_seats']
+        fields = ['source', 'destination', 'dept_date',
+                  'dept_time', 'available_seats']

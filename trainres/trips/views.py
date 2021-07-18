@@ -55,7 +55,7 @@ def book(request, id):
 
     if request.method == 'POST':
         num = int(request.POST.get('seats',''))
-        availableSeats = tripToBook.reserved_seats
+        availableSeats = tripToBook.available_seats
         if num > availableSeats:
             context['error'] = 'Too much seats!'
             context['form'] = BookingForm(request.POST)
@@ -63,7 +63,7 @@ def book(request, id):
 
         obj = Booking(user_id=request.user, trip_id=tripToBook, seats=num , payment_method= payment)
         obj.save()
-        tripToBook.__setattr__('reserved_seats', (availableSeats-num))
+        tripToBook.__setattr__('available_seats', (availableSeats-num))
         tripToBook.save()
         return redirect('trainres-home')
         
@@ -89,7 +89,7 @@ def booking_delete(request , id):
 def delete(request , id):
     booking = Booking.objects.filter(id=id).first()
     trip = booking.trip_id
-    trip.reserved_seats += booking.seats
+    trip.available_seats += booking.seats
     trip.save()
     Booking.objects.filter(id=id).delete()
     return redirect('trainres-bookings')
