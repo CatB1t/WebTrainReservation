@@ -54,8 +54,8 @@
         <th scope="col">Destination</th>
         <th scope="col">Departure Date</th>
         <th scope="col">Departure Time</th>
-        <th scope="col"># Available Seats</th>
         <th scope="col">Train Name</th>
+        <th scope="col"># Available Seats</th>
         <th scope="col"></th>
     </thead>
     <tbody>
@@ -69,7 +69,7 @@
     <td>{{ trip.dept_time|time:"H:i"}}</td>
     <td>{{ trip.train_id.Train_name }}</td>
     {% if trip.available_seats == 0  %}
-    <td class="btn btn-outline-primary">This trip reached maximum number of available seats</td>
+    <td colspan="2" class="btn-outline-primary" >This trip reached maximum number of available seats</td>
     {% else %}
     <td>{{ trip.available_seats }}</td>
     <td><a href="{% url 'trainres-book' id=trip.trip_id %}" class="btn btn-success">Book</a></td>
