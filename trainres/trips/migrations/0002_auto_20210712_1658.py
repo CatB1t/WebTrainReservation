@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RenameField(
             model_name='trip',
-            old_name='reservedSeats',
+            old_name='availableSeats',
             new_name='available_seats',
         ),
         migrations.RenameField(

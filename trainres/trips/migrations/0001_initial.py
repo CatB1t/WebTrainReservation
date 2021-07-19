@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('trid', models.AutoField(primary_key=True, serialize=False)),
                 ('src', models.CharField(max_length=30)),
                 ('dest', models.CharField(max_length=30)),
-                ('reservedSeats', models.IntegerField(default=0)),
+                ('availableSeats', models.IntegerField(default=0)),
                 ('date_time', models.DateTimeField()),
                 ('tid', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='trips.train')),
             ],
